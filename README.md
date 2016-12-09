@@ -5,13 +5,13 @@
 1. Ricardo Ferreira
 2. Valentin Valev
 3. James Sloan
-4. Tapiwa Tryemba
+4. Tapiwa Tiyemba
 
 ---
 
 ##Projects:
 
-* Social Network Media
+* Social Network
 * Auto Shop
 * Taxi Booking System
 * Takeaway Service
