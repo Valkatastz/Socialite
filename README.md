@@ -20,10 +20,10 @@
 
 ##Projects and person in charge:
 
-**Social Network Media:**
+**Social Network:**
 * Valentin Valev
 
-**Auto Shop**
+**CH@RT Portfolio:**
 * Ricardo Ferreira
 
 **Taxi Booking System:**
