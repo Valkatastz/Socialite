@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-6">
                 <form class="form-horizontal" role="form">
-                    <h2>Registration Form</h2>
+                    <h2 align="center">Sign Up</h2>
                     <div class="form-group">
                         <label for="firstName" class="col-sm-3 control-label">Full Name</label>
                         <div class="col-sm-9">
@@ -302,11 +302,6 @@
                                         <input type="radio" id="maleRadio" value="Male">Male
                                     </label>
                                 </div>
-                                <div class="col-sm-4">
-                                    <label class="radio-inline">
-                                        <input type="radio" id="uncknownRadio" value="Unknown">Unknown
-                                    </label>
-                                </div>
                             </div>
                         </div>
                     </div> <!-- /.form-group -->
@@ -328,77 +323,76 @@
                 </form> <!-- /form -->
             </div>
 
-                <div class="col-md-6">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h2> Features </h2>
-                            </div>
-                            <div class=" col-sm-6 col-md-4">
+            <div class="col-md-6">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 align="center"> Features </h2>
+                        </div>
+                        <div class=" col-sm-6 col-md-4">
 
-                                <div class="thumbnail">
-                                    <img src="img/radar.png" alt="socialising">
-                                    </a>
-                                    <div class="caption">
-                                        <h3>Meet your friends</h3>
-                                        <p>Join and find your new friends for life</p>
-                                    </div>
+                            <div class="thumbnail">
+                                <img src="img/radar.png" alt="socialising">
+                                </a>
+                                <div class="caption">
+                                    <h3>Meet your friends</h3>
+                                    <p>Join and find your new friends for life</p>
                                 </div>
                             </div>
+                        </div>
 
 
-                            <div class=" col-sm-6 col-md-4">
-                                <div class="thumbnail">
-                                    <img src="img/party.png" alt="party">
-                                    </a>
-                                    <div class="caption">
-                                        <h3>Are you a party animal?</h3>
-                                        <p>Love to party with your friends? Join NOW!</p>
-                                    </div>
+                        <div class=" col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <img src="img/party.png" alt="party">
+                                </a>
+                                <div class="caption">
+                                    <h3>Are you a party animal?</h3>
+                                    <p>Love to party with your friends? Join NOW!</p>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="col-sm-6 col-md-4">
-                                <div class="thumbnail">
-                                    <img src="img/success.png" alt="succeess">
-                                    </a>
-                                    <div class="caption">
-                                        <h3>Succeed in your career?</h3>
-                                        <p>Dream to succeed in your dream job? Dive in!</p>
-                                    </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <img src="img/success.png" alt="succeess">
+                                </a>
+                                <div class="caption">
+                                    <h3>Succeed in your career?</h3>
+                                    <p>Dream to succeed in your dream job? Dive in!</p>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="col-sm-6 col-md-4">
-                                <div class="thumbnail">
-                                    <img src="img/communicate.png" alt="communicate">
-                                    </a>
-                                    <div class="caption">
-                                        <h3>BE IN TOUCH!</h3>
-                                        <p>Chat with your friends any where, any time!</p>
-                                    </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <img src="img/communicate.png" alt="communicate">
+                                </a>
+                                <div class="caption">
+                                    <h3>BE IN TOUCH!</h3>
+                                    <p>Chat with your friends any where, any time!</p>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="col-sm-6 col-md-4">
-                                <div class="thumbnail">
-                                    <img src="img/success.png" alt="success">
-                                    </a>
-                                    <div class="caption">
-                                        <h3>Be open to the world!</h3>
-                                        <p>Connect with others who you want to meet or work with!</p>
-                                    </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <img src="img/success.png" alt="success">
+                                </a>
+                                <div class="caption">
+                                    <h3>Be open to the world!</h3>
+                                    <p>Connect with others who you want to meet or work with!</p>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="col-sm-6 col-md-4">
-                                <div class="thumbnail">
-                                    <img src="img/employee.png" alt="employee">
-                                    </a>
-                                    <div class="caption">
-                                        <h3>Boost your company!</h3>
-                                        <p>Find the perfect colleagues for your company! JUMP IN!</p>
-                                    </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <img src="img/employee.png" alt="employee">
+                                </a>
+                                <div class="caption">
+                                    <h3>Boost your company!</h3>
+                                    <p>Find the perfect colleagues for your company! JUMP IN!</p>
                                 </div>
                             </div>
                         </div>
@@ -406,6 +400,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 <?php include("inc/footer.inc.php"); ?>

@@ -147,7 +147,7 @@ margin: auto;
 }
 
 .play {
-    position: relative;
+    position: absolute;
     margin: 50px 25px 0px 94px;
     font-size: 25px;
     background-color: rgba(0,0,0,0.19);
