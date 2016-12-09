@@ -99,7 +99,7 @@
 
                         <div class="col-sm-6 col-md-4">
                             <div class="thumbnail">
-                                <img src="img/success.png" alt="succeess">
+                                <img src="img/succeed.png" alt="succeed">
                                 </a>
                                 <div class="caption">
                                     <h3>Succeed in your career?</h3>
