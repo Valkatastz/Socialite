@@ -46,10 +46,8 @@
                 </div>
             </div>
         </div>
-
     </div>
     <script type="text/javascript">
-
     </script>
 
 <?php include("inc/footer.inc.php"); ?>

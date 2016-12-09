@@ -10,8 +10,7 @@
                         </div>
                         <div class="col-md-12 ">
                             <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item" width="600" height="315"
-                                        src="https://www.youtube.com/embed/6Mgqbai3fKo?rel=0" name="show" id="show">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/6Mgqbai3fKo?rel=0" name="show" id="show">
                                 </iframe>
                             </div>
                             <br/>
