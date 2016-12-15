@@ -20,6 +20,10 @@ body {
 	background-color: #eff5f9;
 }
 
+h2 {
+    text-align: center;
+}
+
 /*COLORS*/
 .color-red{color: #FF0000;}
 .color-green{color: #6cbc42;}
@@ -57,19 +61,6 @@ margin: auto;
     right: 0;
     text-align: center;
     color: inherit;
-}
-
-.glyphicon-large {
-    min-height: 260px;
-    line-height: 260px;
-    font-size: 35px;
-    width: 1em;
-    display: block;
-    margin: -0.5em auto 0px;
-
-}
-.glyph-Column {
-    border: 1px solid grey;
 }
 
 .nav {
@@ -160,7 +151,6 @@ margin: auto;
     position: relative;
     border-radius: 0px;
     border: 1px solid rgb(216, 216, 216);
-    font-family: 'Roboto', sans-serif;
 }
 .panel-google-plus > .dropdown {
     position: absolute;

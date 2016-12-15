@@ -1,8 +1,12 @@
 <!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Social Network">
+    <meta name="keywords" content="HTML,CSS,JavaScript,PHP">
+    <meta name="author" content="Valentin Valev">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Socialite - Social Networking</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -17,8 +21,9 @@
     <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="http://www.giuseppegerbino.com/css/glyphs.css" type="text/css" media="screen"/>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     <script src="js/style.js"></script>
     <script
             src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -27,8 +32,9 @@
 
 </head>
 <body>
+
 <div class="container-fluid">
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default">
         <div class="container-fluid navbar-border">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -45,7 +51,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
                     <li><a href="about.php"><i class="fa fa-id-card"></i> About</a></li>
                     <li><a href="profile.php"><i class="fa fa-user-circle" aria-hidden="true"> Profile Demo</i></a></li>
                     <li>

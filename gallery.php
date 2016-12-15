@@ -19,7 +19,7 @@
         <div class="container">
             <ul class="nav nav-tabs">
                 <li role="presentation"><a href="dashboard.php">Dashboard</a></li>
-                <li role="presentation"><a href="profile.php">Profile</a></li>
+                <li role="presentation"><a href="">Profile</a></li>
                 <li role="presentation"><a href="messages.php">Messages</a></li>
                 <li role="presentation" class="active"><a href="gallery.php">Gallery</a></li>
                 <li role="presentation"><a href="videos.php">Video Gallery</a></li>
@@ -454,8 +454,6 @@
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<!-- Bootstrap JS is not required, but included for the responsive demo navigation and button states -->
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 <script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
 <script src="https://raw.github.com/blueimp/Bootstrap-Image-Gallery/master/js/bootstrap-image-gallery.js"></script>
 <script src="https://raw.github.com/blueimp/Bootstrap-Image-Gallery/master/js/demo.js"></script>
