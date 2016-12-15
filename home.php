@@ -21,10 +21,12 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class=" col-xs-4 thumbnail">
-                                <a href="https://www.youtube.com/embed/6Mgqbai3fKo?rel=0" target="show">
+                                <div class="videos">
+                                <a href="https://www.youtube.com/embed/6Mgqbai3fKo?rel=0" class="video" target="show">
                                     <img src="img/thumbnails/chantaje.png" alt="chantaje" class="img-thumbnail img-responsive"/>
                                     <span class="glyphicon glyphicon-play play" aria-hidden="true"></span>
                                 </a>
+                                </div>
                             </div>
 
                             <div class=" col-xs-4 thumbnail">

@@ -12,12 +12,18 @@
                         <span style="color: white; "><p class="transparent">Valentin Valev</p></span>
                         <span style="color: white; "><p class="transparent">Studying Computing BSc at De Montfort University</p></span>
                         <span style="color: white; "><p class="transparent">Lives in Leicester</p></span>
+                        <button class="btn btn-primary" type="button">
+                            Follow <span class="badge"></span>
+                        </button>
+                        <button class="btn btn-primary" type="button">
+                            Add Friend <span class="badge"></span>
+                        </button>
                     </div>
                 </div>
             </div>
 
             <div class="container">
-                <ul class="nav nav-tabs">
+                <ul class="nav nav-tabs navbar-border">
                     <li role="presentation"><a href="dashboard.php">Dashboard</a></li>
                     <li role="presentation" class="active"><a href="#">Profile</a></li>
                     <li role="presentation"><a href="messages.php">Messages</a></li>
@@ -27,7 +33,6 @@
                     <li role="presentation"><a href="jobs.php">Jobs</a></li>
                 </ul>
             </div>
-        </div>
     </header>
 
     <section class="section-01">
