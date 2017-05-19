@@ -1,9 +1,9 @@
-namespace Socialite.Migrations.CommentDbContext
+namespace Socialite.Migrations.DashboardDbContext
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Comment : DbMigration
+    public partial class Dashboard : DbMigration
     {
         public override void Up()
         {
@@ -114,6 +114,20 @@ namespace Socialite.Migrations.CommentDbContext
                 .Index(t => t.Reply_Id);
             
             CreateTable(
+                "dbo.PostLike",
+                c => new
+                    {
+                        PostId = c.String(nullable: false, maxLength: 128),
+                        Username = c.String(),
+                        Like = c.Boolean(nullable: false),
+                        Dislike = c.Boolean(nullable: false),
+                        Post_Id = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.PostId)
+                .ForeignKey("dbo.Post", t => t.Post_Id)
+                .Index(t => t.Post_Id);
+            
+            CreateTable(
                 "dbo.PostTag",
                 c => new
                     {
@@ -133,7 +147,7 @@ namespace Socialite.Migrations.CommentDbContext
                     {
                         Id = c.String(nullable: false, maxLength: 128),
                         Name = c.String(nullable: false),
-                        UrlSeo = c.String(nullable: false, maxLength: 20),
+                        UrlSeo = c.String(nullable: false),
                         Checked = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
@@ -152,28 +166,14 @@ namespace Socialite.Migrations.CommentDbContext
                 .ForeignKey("dbo.Post", t => t.PostId)
                 .Index(t => t.PostId);
             
-            CreateTable(
-                "dbo.PostLike",
-                c => new
-                    {
-                        PostId = c.String(nullable: false, maxLength: 128),
-                        Username = c.String(),
-                        Like = c.Boolean(nullable: false),
-                        Dislike = c.Boolean(nullable: false),
-                        Post_Id = c.String(maxLength: 128),
-                    })
-                .PrimaryKey(t => t.PostId)
-                .ForeignKey("dbo.Post", t => t.Post_Id)
-                .Index(t => t.Post_Id);
-            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.PostLike", "Post_Id", "dbo.Post");
             DropForeignKey("dbo.PostVideo", "PostId", "dbo.Post");
             DropForeignKey("dbo.PostTag", "TagId", "dbo.Tag");
             DropForeignKey("dbo.PostTag", "PostId", "dbo.Post");
+            DropForeignKey("dbo.PostLike", "Post_Id", "dbo.Post");
             DropForeignKey("dbo.PostCategory", "PostId", "dbo.Post");
             DropForeignKey("dbo.ReplyLike", "Reply_Id", "dbo.Reply");
             DropForeignKey("dbo.Reply", "PostId", "dbo.Post");
@@ -181,10 +181,10 @@ namespace Socialite.Migrations.CommentDbContext
             DropForeignKey("dbo.Comment", "PostId", "dbo.Post");
             DropForeignKey("dbo.CommentLike", "Comment_Id", "dbo.Comment");
             DropForeignKey("dbo.PostCategory", "CategoryId", "dbo.Category");
-            DropIndex("dbo.PostLike", new[] { "Post_Id" });
             DropIndex("dbo.PostVideo", new[] { "PostId" });
             DropIndex("dbo.PostTag", new[] { "TagId" });
             DropIndex("dbo.PostTag", new[] { "PostId" });
+            DropIndex("dbo.PostLike", new[] { "Post_Id" });
             DropIndex("dbo.ReplyLike", new[] { "Reply_Id" });
             DropIndex("dbo.Reply", new[] { "CommentId" });
             DropIndex("dbo.Reply", new[] { "PostId" });
@@ -192,10 +192,10 @@ namespace Socialite.Migrations.CommentDbContext
             DropIndex("dbo.Comment", new[] { "PostId" });
             DropIndex("dbo.PostCategory", new[] { "CategoryId" });
             DropIndex("dbo.PostCategory", new[] { "PostId" });
-            DropTable("dbo.PostLike");
             DropTable("dbo.PostVideo");
             DropTable("dbo.Tag");
             DropTable("dbo.PostTag");
+            DropTable("dbo.PostLike");
             DropTable("dbo.ReplyLike");
             DropTable("dbo.Reply");
             DropTable("dbo.CommentLike");

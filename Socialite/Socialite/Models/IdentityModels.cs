@@ -32,17 +32,15 @@ namespace Socialite.Models
         }
     }
 
-    public class CommentDbContext : DbContext
+    public class DashboardDbContext : DbContext
     {
-
-        public CommentDbContext()
-        : base("CommentConnection")
+        public DashboardDbContext() : base("DashboardConnection")
         {
         }
 
-        public static CommentDbContext Create()
+        public static DashboardDbContext Create()
         {
-            return new CommentDbContext();
+            return new DashboardDbContext();
         }
 
         public DbSet<Post> Posts { get; set; }
@@ -61,5 +59,4 @@ namespace Socialite.Models
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
     }
-
 }
