@@ -1,5 +1,8 @@
 namespace Socialite.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -26,6 +29,27 @@ namespace Socialite.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            //context.Roles.AddOrUpdate(r => r.Name,
+            //    new IdentityRole { Name = "Admin" },
+            //    new IdentityRole { Name = "Senior" },
+            //    new IdentityRole { Name = "Moderator" },
+            //    new IdentityRole { Name = "Member" },
+            //    new IdentityRole { Name = "Junior" },
+            //    new IdentityRole { Name = "Candidate" });
+
+            var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            string[] roleNames = { "Admin", "Member", "Moderator", "Junior", "Senior", "Candidate" };
+            IdentityResult roleResult;
+            foreach (var roleName in roleNames)
+            {
+                if (!RoleManager.RoleExists(roleName))
+                {
+                    roleResult = RoleManager.Create(new IdentityRole(roleName));
+                }
+            }
+
+            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            UserManager.AddToRole("91cb18e2-6747-4e63-8479-3276cf2ac7bf", "Admin");
         }
     }
 }

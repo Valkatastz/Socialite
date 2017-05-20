@@ -7,9 +7,10 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @{ 
-                var imgUrl = Url.Content("~/Content/images/profile/" + User.Identity.GetUserName() + ".png") + "? time=" + DateTime.Now.ToString();
-            }
+    @{
+        var imgUrl = Url.Content("~/Content/images/profile/" + User.Identity.GetUserName() + ".png") + "? time=" + DateTime.Now.ToString();
+    <li>@Html.ActionLink("Dashboard", "Index", "Dashboard")</li>
+    }
             <img src="@imgUrl" height="50" width="50" />
         </li>
         <li>

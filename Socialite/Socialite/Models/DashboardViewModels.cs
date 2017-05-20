@@ -12,36 +12,24 @@ namespace Socialite.Models
     {
         public string Id { get; set; }
         [Required]
-        [StringLength(50, ErrorMessage = "The {0} must be between {2} and {1} characters long!")]
         [Display(Name = "Title")]
         public string Title { get; set; }
-
         [Required]
-        [StringLength(250, ErrorMessage = "The {0} must be between {2} and {1} characters long!")]
-        [Display(Name = "Short Description")]
+        [Display(Name = "ShortDescription")]
         public string ShortDescription { get; set; }
-
         [Required]
-        [StringLength(5000, ErrorMessage = "The {0} must be between {2} and {1} characters long!")]
         [Display(Name = "Body")]
         public string Body { get; set; }
-
         [Required]
-        [StringLength(25, ErrorMessage = "The {0] must be between {2} and {1} characters long!")]
         [Display(Name = "Meta")]
         public string Meta { get; set; }
-
         [Required]
         [Display(Name = "UrlSeo")]
         public string UrlSeo { get; set; }
-
         public bool Published { get; set; }
-
         [DefaultValue(0)]
         public int NetLikeCount { get; set; }
-
         public DateTime PostedOn { get; set; }
-
         public DateTime? Modified { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
@@ -50,29 +38,22 @@ namespace Socialite.Models
         public ICollection<PostTag> PostTags { get; set; }
         public ICollection<PostVideo> PostVideos { get; set; }
         public ICollection<PostLike> PostLikes { get; set; }
-
     }
-
     public class Category
     {
         public string Id { get; set; }
         [Required]
         [Display(Name = "Name")]
         public string Name { get; set; }
-
         [Required]
         [Display(Name = "UrlSeo")]
         public string UrlSeo { get; set; }
-
         [Required]
-        [StringLength(20, ErrorMessage = "The {0} must be between {2} and {1} characters long!")]
         [Display(Name = "Description")]
         public string Description { get; set; }
-
         public bool Checked { get; set; }
         public ICollection<PostCategory> PostCategories { get; set; }
     }
-
     public class PostCategory
     {
         [Key]
@@ -84,74 +65,55 @@ namespace Socialite.Models
         public string CategoryId { get; set; }
 
         public bool Checked { get; set; }
-
         public Post Post { get; set; }
-
         public Category Category { get; set; }
-    }
 
+    }
     public class Comment
     {
         public string Id { get; set; }
-        public string PostId { get; set; }
+        public string PageId { get; set; }
         public DateTime DateTime { get; set; }
         public string UserName { get; set; }
-
         [Required]
-        [StringLength(1000, ErrorMessage = "the {0} must be between {2} and {1} long!")]
         public string Body { get; set; }
-
         [DefaultValue(0)]
         public int NetLikeCount { get; set; }
-
         [DefaultValue(false)]
         public bool Deleted { get; set; }
-
         public Post Post { get; set; }
-
         public ICollection<Reply> Replies { get; set; }
 
         public ICollection<CommentLike> CommentLikes { get; set; }
     }
-
     public class Reply
     {
         public string Id { get; set; }
-        public string PostId { get; set; }
         public string CommentId { get; set; }
         public string ParentReplyId { get; set; }
         public DateTime DateTime { get; set; }
         public string UserName { get; set; }
         [Required]
-        [StringLength(1000, ErrorMessage = "The {0} must be between {2} and {1} characters long!")]
         public string Body { get; set; }
-
         [DefaultValue(false)]
         public bool Deleted { get; set; }
-
         public Post Post { get; set; }
-
         public Comment Comment { get; set; }
-
         public ICollection<ReplyLike> ReplyLikes { get; set; }
     }
-
     public class Tag
     {
         public string Id { get; set; }
         [Required]
         [Display(Name = "Name")]
         public string Name { get; set; }
-
         [Required]
         [Display(Name = "UrlSeo")]
         public string UrlSeo { get; set; }
 
         public bool Checked { get; set; }
-
         public ICollection<PostTag> PostTags { get; set; }
     }
-
     public class PostTag
     {
         [Key]
@@ -163,58 +125,42 @@ namespace Socialite.Models
         public string TagId { get; set; }
 
         public bool Checked { get; set; }
-
         public Post Post { get; set; }
-
         public Tag Tag { get; set; }
-    }
 
+    }
     public class PostVideo
     {
         public int Id { get; set; }
-
         [Required]
         [Display(Name = "VideoUrl")]
-        [DataType(DataType.Url)]
         public string VideoUrl { get; set; }
-
         public string VideoThumbnail { get; set; }
-
         public string PostId { get; set; }
-
         public string VideoSiteName { get; set; }
 
         public Post Post { get; set; }
-    }
 
+    }
     public class PostLike
     {
         [Key]
         public string PostId { get; set; }
-
         public string Username { get; set; }
-
         public bool Like { get; set; }
-
         public bool Dislike { get; set; }
 
         public Post Post { get; set; }
     }
-
     public class CommentLike
     {
         [Key]
         public string CommentId { get; set; }
-
         public string Username { get; set; }
-
         public bool Like { get; set; }
-
         public bool Dislike { get; set; }
-
         public Comment Comment { get; set; }
     }
-
     public class ReplyLike
     {
         [Key]
@@ -223,6 +169,7 @@ namespace Socialite.Models
         public bool Like { get; set; }
         public bool Dislike { get; set; }
         public Reply Reply { get; set; }
+
     }
 
 
@@ -242,6 +189,8 @@ namespace Socialite.Models
         public IList<Category> PostCategories { get; set; }
         public IList<Tag> PostTags { get; set; }
         public string UrlSlug { get; set; }
+        public CommentViewModel CommentViewModel { get; set; }
+        public PagedList.IPagedList<DashboardViewModel> PagedBlogViewModel { get; set; }
     }
 
     public class AllPostsViewModel
@@ -256,5 +205,47 @@ namespace Socialite.Models
         public bool Checked { get; set; }
         public Tag Tag { get; set; }
         public string UrlSlug { get; set; }
+    }
+
+    public class PostViewModel
+    {
+        public string Body { get; set; }
+        public string FirstPostId { get; set; }
+        public string ID { get; set; }
+        public string LastPostId { get; set; }
+        public string NextPostSlug { get; set; }
+        public int PostCount { get; set; }
+        public int PostDislikes { get; set; }
+        public int PostLikes { get; set; }
+        public string PreviousPostSlug { get; set; }
+        public string Title { get; set; }
+        public IList<PostVideo> Videos { get; set; }
+        public IList<Tag> PostTags { get; set; }
+        public string Meta { get; set; }
+        public string UrlSeo { get; set; }
+        public IList<Category> PostCategories { get; set; }
+        public string ShortDescription { get; set; }
+        public IList<Category> Categories { get; set; }
+        public IList<Tag> Tags { get; set; }
+
+        public CommentViewModel CommentViewModel { get; set; }
+    }
+    public class CommentViewModel
+    {
+        public CommentViewModel() { }
+        public CommentViewModel(Comment comment)
+        {
+            Comment = comment;
+        }
+        public IList<Comment> Comments { get; set; }
+        public string ID { get; set; }
+        public Comment Comment { get; set; }
+        public string UrlSeo { get; set; }
+        public DateTime DateTime { get; set; }
+        public IList<CommentViewModel> ChildReplies { get; set; }
+        public string Body { get; set; }
+        public string Id { get; set; }
+        public string ParentReplyId { get; set; }
+        public string UserName { get; set; }
     }
 }

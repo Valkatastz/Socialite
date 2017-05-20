@@ -1,20 +1,34 @@
-﻿@model PagedList.IPagedList<Socialite.Models.DashboardViewModel>
+﻿@model DashboardViewModel
 @using Socialite.Controllers
+@using Socialite.Models
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var categories = DashboardController.checkCatList;
     var tags = DashboardController.checkTagList;
-}
 
-<div class="dashboardContainer">
-    <div class="maindashboardview">
-        @{Html.RenderPartial("Posts");}
+}
+<div class="DashboardContainer">
+    <div class="mainbdashview">
+        @{Html.RenderPartial("Posts", Model.PagedBlogViewModel);}
     </div>
     <div class="maindashboardbar">
+        @if (User.IsInRole("Admin"))
+            {
+            <div class="adminDashCtrl">
+                <table>
+                    <tr>
+                        <td><a href="@Url.Action("AddNewPost","Dashboard")">Add New Post</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("CategoriesAndTags","Dashboard")">Categories And Tags</a></td>
+                    </tr>
+                </table>
+            </div>
+        }
 
-        <div class="dashboardControlPanel">
-            @using (@Html.BeginForm("Index", "Dashboard", FormMethod.Get, new { @class = "indexSearchForm" }))
+        <div class="dashControlPanel">
+            @using (Html.BeginForm("Index", "Dashboard", FormMethod.Get, new { @class = "indexSearchForm" }))
             {
                 if (ViewBag.CurrentSearchCategory != null)
                 {
@@ -32,65 +46,70 @@
                 }
                 <input type="hidden" name="sortOrder" value="@ViewBag.CurrentSort" />
                 <input type="search" name="searchString" value="@ViewBag.CurrentSearchString" placeholder="Search..." />
-                <input type="submit" value="&#128270;" style="background:none; border:none;" />
+                    <input type="submit" value="&#128270;" style="background:none;border:none;" />
             }
-            <div style="margin:10px;"><a href="@Url.Action("AllPosts", "Dashboard")" style="text-decoration:none; color:blue;" title="Posts">Post List</a></div>
-            <div style="color:blue; cursor:pointer; float:left; width:300px; margin:10px;" id="indexFilterBtn">Filter</div>
-        @using (Html.BeginForm("Index", "Dashboard", FormMethod.Get, new { @class = "indexFilterForm" }))
-        {
-            <table class="dashCrtlTable">
-                <tr>
-                    <td><a class="dashCtrlPnl" title="Categories">Categories</a></td>
-                </tr>
-                <tr>
-                    <td style="width:100%;">
-                        @foreach (var cat in categories)
-                        {
-                            <div style="width:45%; float: left;">
-                                @if (cat.Checked)
-                                {
-                                    <input type="checkbox" name="searchCategory" value="@cat.Category.Name" checked="checked" /> @cat.Category.Name
-                                }
-                                else
-                                {
-                                    <input type="checkbox" name="searchCategory" value="@cat.Category.Name" /> @cat.Category.Name
-                                }
-                            </div>
-                        }
-                    </td>
-                </tr>
-                <tr>
-                    <td><a class="dashCtrlPnl" title="Tags">Tags</a></td>
-                </tr>
-                <tr>
-                    <td style="width:100%;">
-                        @foreach (var tag in tags)
-                        {
-                            <div style="width:45%; float:left;">
-                                @if (tag.Checked)
-                                {
-                                    <input type="checkbox" name="searchTag" value="@tag.Tag.Name" checked="checked" /> @tag.Tag.Name
-                                }
-                                else
-                                {
-                                    <input type="checkbox" name="searchTag" value="@tag.Tag.Name" />
-                                }
-                            </div>
-                        }
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="hidden" name="page" value="1" />
-                        <input type="hidden" name="sortOrder" value="@ViewBag.CurrentSort" />
-                        <input type="hidden" name="searchString" value="@ViewBag.CurrentSearchString" />
-                        <input class="indexFiltBtn" type="submit" value="Filter" />
-                    </td>
-                </tr>
-            </table>
-        }
+            @{
+                var rssUrl = Request.Url.Scheme + "://" + Request.Url.Host + "/Dashboard/feed";
+            }
+            <div style="margin:10px;"><a href="@rssUrl" style="text-decoration:none;color:blue;" title="RSS">RSS Feed</a></div>
+            <div style="margin:10px;"><a href="@Url.Action("AllPosts", "Dashboard")" style="text-decoration:none;color:blue;" title="Posts">Post List</a></div>
+            <div style="color:blue;cursor:pointer;float:left;width:300px;margin:10px;" id="indexFilterBtn">Filter</div>
+            @using (Html.BeginForm("Index", "Dashboard", FormMethod.Get, new { @class = "indexFilterForm" }))
+            {
+                <table class="dashCtrlTable">
+                    <tr>
+                        <td><a class="blgCtrlPnl" title="Categories">Categories</a></td>
+                    </tr>
+                    <tr>
+                        <td style="width:100%;">
+                            @foreach (var cat in categories)
+                            {
+                                <div style="width:45%;float:left;">
+                                    @if (cat.Checked)
+                                    {
+                                        <input type="checkbox" name="searchCategory" value="@cat.Category.Name" checked="checked" /> @cat.Category.Name
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" name="searchCategory" value="@cat.Category.Name" /> @cat.Category.Name
+                                    }
+                                </div>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a class="blgCtrlPnl" title="Tags">Tags</a></td>
+                    </tr>
+                    <tr>
+                        <td style="width:100%;">
+                            @foreach (var tag in tags)
+                            {
+                                <div style="width:45%;float:left;">
+                                    @if (tag.Checked)
+                                    {
+                                        <input type="checkbox" name="searchTag" value="@tag.Tag.Name" checked="checked" /> @tag.Tag.Name
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" name="searchTag" value="@tag.Tag.Name" /> @tag.Tag.Name
+                                    }
+                                </div>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="hidden" name="page" value="1" />
+                            <input type="hidden" name="sortOrder" value="@ViewBag.CurrentSort" />
+                            <input type="hidden" name="searchString" value="@ViewBag.CurrentSearchString" />
+                            <input class="indexFiltBtn" type="submit" value="Filter" />
+                        </td>
+                    </tr>
+                </table>
+            }
         </div>
-
     </div>
 </div>
-
+<div class="mainComments">
+    @{Html.RenderPartial("Comments", Model.CommentViewModel);}
+</div>
