@@ -227,6 +227,7 @@ namespace Socialite.Models
         public string ShortDescription { get; set; }
         public IList<Category> Categories { get; set; }
         public IList<Tag> Tags { get; set; }
+        public IList<Comment> Comments { get; set; }
 
         public CommentViewModel CommentViewModel { get; set; }
     }

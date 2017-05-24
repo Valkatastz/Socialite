@@ -22,8 +22,8 @@
         @if (Request.IsAuthenticated)
         {
             var imgUrl = Url.Content("~/Content/images/profile/" + User.Identity.GetUserName() + ".png") + "?time=" + DateTime.Now.ToString();
-            DashboardController blgCtrl = new DashboardController();
-            var ncmDetails = blgCtrl.NewCommentDetails(User.Identity.GetUserName());
+            DashboardController dashCtrl = new DashboardController();
+            var ncmDetails = dashCtrl.NewCommentDetails(User.Identity.GetUserName());
             <table class="newComment">
                 <tr>
                     <td style="width:50px;vertical-align: top;"><div class="comImg"><img src="@imgUrl" height="50" width="50" /></div></td>
@@ -52,10 +52,10 @@
         }
         @foreach (var comment in Model.Comments)
         {
-            DashboardController blgCtrl = new DashboardController();
-            var cmDetails = blgCtrl.CommentDetails(comment);
-            var likes = blgCtrl.LikeDislikeCount("commentlike", comment.Id);
-            var dislikes = blgCtrl.LikeDislikeCount("commentdislike", comment.Id);
+            DashboardController dashCtrl = new DashboardController();
+            var cmDetails = dashCtrl.CommentDetails(comment);
+            var likes = dashCtrl.LikeDislikeCount("commentlike", comment.Id);
+            var dislikes = dashCtrl.LikeDislikeCount("commentdislike", comment.Id);
             var twshareUrl = "https://twitter.com/intent/tweet?text=" + comment.Body + "  -- " + comment.UserName + "&url=" + Url.Encode(HttpContext.Current.Request.Url.AbsoluteUri);
 
 
@@ -73,7 +73,7 @@
                     <div class="commentDate">@cmDetails[3]</div>
                     <div class="commentExp" id="@cmDetails[7]">
                         <div class="commentBody">@Html.Raw(comment.Body)</div>
-                        @if (!blgCtrl.CommentDeleteCheck(comment.Id))
+                        @if (!dashCtrl.CommentDeleteCheck(comment.Id))
                         {
                             <div class="replySubMenu">
                                 <a class="likecount" style="color:green;">@likes</a>
@@ -91,8 +91,8 @@
                                 {
                                     <table class="commentMenu" id="@cmDetails[16]">
                                         <tr>
-                                            <td><a href="@Url.Action("EditComment", "Dashbaord", new { commentid = comment.Id })" title="Edit"><img src="@Url.Content("~/Content/images/post/edit.png")" alt="edit" /></a></td>
-                                            <td><a href="@Url.Action("DeleteComment", "Dashbaord", new { commentid = comment.Id })" title="Delete"><img src="@Url.Content("~/Content/images/post/delete.png")" alt="delete" /></a></td>
+                                            <td><a href="@Url.Action("EditComment", "Dashboard", new { commentid = comment.Id })" title="Edit"><img src="@Url.Content("~/Content/images/post/edit.png")" alt="edit" /></a></td>
+                                            <td><a href="@Url.Action("DeleteComment", "Dashboard", new { commentid = comment.Id })" title="Delete"><img src="@Url.Content("~/Content/images/post/delete.png")" alt="delete" /></a></td>
                                         </tr>
                                     </table>
                                 }
@@ -104,14 +104,14 @@
                                     <tr>
                                         <td style="width:50px;vertical-align: top;"><div class="comImg"><img src="@imgUrl" height="50" width="50" /></div></td>
                                         <td style="vertical-align:middle; min-height:40px;" class="comText" id="@cmDetails[12]">
-                                            @using (Html.BeginForm("NewParentReply", "Dashbaord", FormMethod.Post, new { @class = "comTextdivParent", role = "form" }))
+                                            @using (Html.BeginForm("NewParentReply", "Dashboard", FormMethod.Post, new { @class = "comTextdivParent", role = "form" }))
                                             {
                                                 @Html.AntiForgeryToken()
                                                 <textarea name="replyBody" id="@cmDetails[13]"></textarea>
                                                 <script>
                                                     CKEDITOR.replace('@cmDetails[13]',
                                                         {
-                                                            customConfig: '/Scripts/ckEditorConfig1.js'
+                                                            customConfig: '/Scripts/ckEditorConf.js'
                                                         });
                                                 </script>
                                                 <div class="comTextSub">
@@ -131,6 +131,10 @@
                 </div>
                 <div class="commentreplies" id="@cmDetails[6]">
                     @{Html.RenderPartial("Replies", new CommentViewModel(comment));}
+                </div>
+                <div class="delaccgrp">
+                    <input type="hidden" value="@Model.ID" name="postId" />
+                    <input type="submit" value="Delete Post" class="btn btn-default delaccbtn" />
                 </div>
             </div>
                         }

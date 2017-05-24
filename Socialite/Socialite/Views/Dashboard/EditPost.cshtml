@@ -29,7 +29,7 @@
                     {
                         <td>VideoUrls :</td>
                     }
-                    <td style="width:30px;"><a href="@Url.Action("AddVideoToPost", "Dashboard", new { postid = Model.ID,slug=Model.UrlSeo})" class="addremoveBtn" title="Add Video"><img src="@Url.Content("~/Content/images/post/add.png")" width="25" height="25" alt="add" /></a></td>
+                    <td style="width:30px;"><a href="@Url.Action("AddVideoToPost", "Dashboard", new { postid = Model.ID,slug=Model.UrlSeo})" class="addremoveBtn" title="Add Video"><img src="@Url.Content("~/Content/images/post/upload.png")" width="25" height="25" alt="upload" /></a></td>
                     <td class="editPostVideo">
                         @foreach (var video in Model.Videos)
                         {
@@ -45,7 +45,7 @@
             {
                 <tr>
                     <td>VideoUrl :</td>
-                    <td colspan="2"><a href="@Url.Action("AddVideoToPost", "Dashboard", new { postid = Model.ID,slug=Model.UrlSeo})" class="addremoveBtn" title="Add Video"><img src="@Url.Content("~/Content/images/post/add.png")" width="25" height="25" alt="add" /></a></td>
+                    <td colspan="2"><a href="@Url.Action("AddVideoToPost", "Dashboard", new { postid = Model.ID,slug=Model.UrlSeo})" class="addremoveBtn" title="Add Video"><img src="@Url.Content("~/Content/images/post/upload.png")" width="25" height="25" alt="upload" /></a></td>
                 </tr>
             }
 
@@ -60,13 +60,13 @@
                     {
                         <td>Categories :</td>
                     }
-                    <td style="width:30px;"><a href="@Url.Action("AddCategoryToPost", "Dashboard", new { postid = Model.ID})" class="addremoveBtn" title="Add Video"><img src="@Url.Content("~/Content/images/post/add.png")" width="25" height="25" alt="add" /></a></td>
+                    <td style="width:30px;"><a href="@Url.Action("AddCategoryToPost", "Dashboard", new { postid = Model.ID})" class="addremoveBtn" title="Add Video"><img src="@Url.Content("~/Content/images/post/upload.png")" width="25" height="25" alt="upload" /></a></td>
                     <td class="editPostCategories">
                         @foreach (var cat in Model.PostCategories)
                         {
                             <div class="editPostCatInp">
                                 <div class="catName">@cat.Name</div>
-                                <a href="@Url.Action("RemoveCategoryFromPost", "Dashboard", new { postid = Model.ID,slug=Model.UrlSeo,catName=cat.Name })" class="addremoveBtn" title="Add Video"><img src="@Url.Content("~/Content/images/post/remove.png")" width="25" height="25" alt="add" /></a>
+                                <a href="@Url.Action("RemoveCategoryFromPost", "Dashboard", new { postid = Model.ID,slug=Model.UrlSeo,catName=cat.Name })" class="addremoveBtn" title="Add Video"><img src="@Url.Content("~/Content/images/post/remove.png")" width="25" height="25" alt="remove" /></a>
                             </div>
                         }
                     </td>
@@ -76,7 +76,7 @@
             {
                 <tr>
                     <td>Category :</td>
-                    <td colspan="2"><a href="@Url.Action("AddCategoryToPost", "Dashboard", new { postid = Model.ID})" class="addremoveBtn" title="Add Category"><img src="@Url.Content("~/Content/images/post/add.png")" width="25" height="25" alt="add" /></a></td>
+                    <td colspan="2"><a href="@Url.Action("AddCategoryToPost", "Dashboard", new { postid = Model.ID})" class="addremoveBtn" title="Add Category"><img src="@Url.Content("~/Content/images/post/upload.png")" width="25" height="25" alt="upload" /></a></td>
                 </tr>
             }
             @if (Model.PostTags != null)
@@ -90,13 +90,13 @@
                     {
                         <td>Tags :</td>
                     }
-                    <td style="width:30px;"><a href="@Url.Action("AddTagToPost", "Dashboard", new { postid = Model.ID})" class="addremoveBtn" title="Add Video"><img src="@Url.Content("~/Content/images/post/add.png")" width="25" height="25" alt="add" /></a></td>
+                    <td style="width:30px;"><a href="@Url.Action("AddTagToPost", "Dashboard", new { postid = Model.ID})" class="addremoveBtn" title="Add Video"><img src="@Url.Content("~/Content/images/post/upload.png")" width="25" height="25" alt="upload" /></a></td>
                     <td class="editPostTags">
                         @foreach (var tag in Model.PostTags)
                         {
                             <div class="editPostTagInp">
                                 <div class="tagName">@tag.Name</div>
-                                <a href="@Url.Action("RemoveTagFromPost", "Dashboard", new { postid = Model.ID,slug=Model.UrlSeo,tagName=tag.Name })" class="addremoveBtn" title="Add Video"><img src="@Url.Content("~/Content/images/post/remove.png")" width="25" height="25" alt="add" /></a>
+                                <a href="@Url.Action("RemoveTagFromPost", "Dashboard", new { postid = Model.ID,slug=Model.UrlSeo,tagName=tag.Name })" class="addremoveBtn" title="Add Video"><img src="@Url.Content("~/Content/images/post/remove.png")" width="25" height="25" alt="remove" /></a>
                             </div>
                         }
                     </td>
@@ -106,7 +106,7 @@
             {
                 <tr>
                     <td>Tag :</td>
-                    <td colspan="2"><a href="@Url.Action("AddTagToPost", "Dashboard", new { postid = Model.ID})" class="addremoveBtn" title="Add Tag"><img src="@Url.Content("~/Content/images/post/add.png")" width="25" height="25" alt="add" /></a></td>
+                    <td colspan="2"><a href="@Url.Action("AddTagToPost", "Dashboard", new { postid = Model.ID})" class="addremoveBtn" title="Add Tag"><img src="@Url.Content("~/Content/images/post/upload.png")" width="25" height="25" alt="upload" /></a></td>
                 </tr>
             }
             <tr>

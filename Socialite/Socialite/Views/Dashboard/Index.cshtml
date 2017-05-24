@@ -8,14 +8,14 @@
     var tags = DashboardController.checkTagList;
 
 }
-<div class="DashboardContainer">
-    <div class="mainbdashview">
+<div class="blogContainer">
+    <div class="mainblogview">
         @{Html.RenderPartial("Posts", Model.PagedBlogViewModel);}
     </div>
-    <div class="maindashboardbar">
+    <div class="mainblogbar">
         @if (User.IsInRole("Admin"))
             {
-            <div class="adminDashCtrl">
+            <div class="adminBlogCtrl">
                 <table>
                     <tr>
                         <td><a href="@Url.Action("AddNewPost","Dashboard")">Add New Post</a></td>
@@ -27,7 +27,7 @@
             </div>
         }
 
-        <div class="dashControlPanel">
+        <div class="blogControlPanel">
             @using (Html.BeginForm("Index", "Dashboard", FormMethod.Get, new { @class = "indexSearchForm" }))
             {
                 if (ViewBag.CurrentSearchCategory != null)
@@ -46,17 +46,17 @@
                 }
                 <input type="hidden" name="sortOrder" value="@ViewBag.CurrentSort" />
                 <input type="search" name="searchString" value="@ViewBag.CurrentSearchString" placeholder="Search..." />
-                    <input type="submit" value="&#128270;" style="background:none;border:none;" />
+                <input type="submit" value="&#128270;" style="background:none;border:none;" />
             }
             @{
                 var rssUrl = Request.Url.Scheme + "://" + Request.Url.Host + "/Dashboard/feed";
             }
             <div style="margin:10px;"><a href="@rssUrl" style="text-decoration:none;color:blue;" title="RSS">RSS Feed</a></div>
-            <div style="margin:10px;"><a href="@Url.Action("AllPosts", "Dashboard")" style="text-decoration:none;color:blue;" title="Posts">Post List</a></div>
+            <div style="margin:10px;"><a href="@Url.Action("AllPosts", "Blog")" style="text-decoration:none;color:blue;" title="Posts">Post List</a></div>
             <div style="color:blue;cursor:pointer;float:left;width:300px;margin:10px;" id="indexFilterBtn">Filter</div>
             @using (Html.BeginForm("Index", "Dashboard", FormMethod.Get, new { @class = "indexFilterForm" }))
             {
-                <table class="dashCtrlTable">
+                <table class="blogCtrlTable">
                     <tr>
                         <td><a class="blgCtrlPnl" title="Categories">Categories</a></td>
                     </tr>

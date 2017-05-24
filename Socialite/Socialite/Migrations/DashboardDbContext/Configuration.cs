@@ -59,16 +59,6 @@ namespace Socialite.Migrations.DashboardDbContext
 
             context.Replies.AddOrUpdate(new Models.Reply { Id = "rep1", CommentId = "cmt3", DateTime = DateTime.Now, UserName = "flint", Body = "Cras sodales justo sit amet libero placerat consectetur. Duis hendrerit facilisis tempor. Nullam ut nisl nec neque posuere semper. Praesent vestibulum id purus quis maximus." });
             context.Replies.AddOrUpdate(new Models.Reply { Id = "rep9", CommentId = "cmt3", DateTime = DateTime.Now, UserName = "anyav", Body = "Cras sodales justo sit amet libero placerat consectetur. Duis hendrerit facilisis tempor. Nullam ut nisl nec neque posuere semper. Praesent vestibulum id purus quis maximus." });
-            context.Replies.AddOrUpdate(new Models.Reply
-            {
-                Id = "rep2",
-                CommentId = "cmt3",
-                ParentReplyId = "rep1",
-                DateTime = DateTime.Now,
-                UserName = "devsone",
-                Body = "Mauris pulvinar tristique libero id ornare. Quisque sit amet accumsan leo. Vestibulum dapibus elit sed lorem lacinia suscipit. In hac habitasse pl..."
-            }
-            );
         }
     }
 }

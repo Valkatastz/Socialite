@@ -31,7 +31,7 @@
                     {
                         <div class="replySubMenu">
                             <a class="likecount" style="color:green;">@likes</a>
-                            <a href="@Url.Action("UpdateReplyLike", "Dashbaord", new { replyid = childReply.Id,  username = User.Identity.GetUserName(), likeordislike = "like",sortorder = ViewBag.CurrentSort })"><img src="@Url.Content("~/Content/images/post/like.png")" alt="like" /></a>
+                            <a href="@Url.Action("UpdateReplyLike", "Dashboard", new { replyid = childReply.Id,  username = User.Identity.GetUserName(), likeordislike = "like",sortorder = ViewBag.CurrentSort })"><img src="@Url.Content("~/Content/images/post/like.png")" alt="like" /></a>
                             <a href="@Url.Action("UpdateReplyLike", "Dashboard", new { replyid = childReply.Id,  username = User.Identity.GetUserName(), likeordislike = "dislike",sortorder = ViewBag.CurrentSort })"><img src="@Url.Content("~/Content/images/post/dislike.png")" alt="dislike" /></a>
                             <a class="likecount" style="color:red;">@dislikes</a>
                             <a style="cursor:pointer;" class="comReplyParent" id="@crDetails[14]">Reply</a>
@@ -66,7 +66,7 @@
                                             <script>
                                             CKEDITOR.replace('@crDetails[13]',
                                                 {
-                                                    customConfig: '/Scripts/ckEditorConfig1.js'
+                                                    customConfig: '/Scripts/ckEditorConf.js'
                                                 });
                                             </script>
                                             <div class="comTextSub">

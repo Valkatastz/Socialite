@@ -12,7 +12,7 @@
     <table class="addCatCont">
         <tr>
             <td><a href="@Url.Action("AddNewTag", "Dashboard", new { postid = Model.ID, callfrompost=true})" class="addremoveBtn" title="Add Tag"><img src="@Url.Content("~/Content/images/post/add.png")" width="25" height="25" alt="add" /></a></td>
-            <td><= Add New Tag</td>
+            <td><a href="@Url.Action("AddNewTag", "Dashboard", new { callfrompost = false })" class="addremoveBtn" title="Add Tag"><img src="@Url.Content("~/Content/images/post/add.png")" width="25" height="25" alt="add" style="float:left;" /><div style="float:left;margin-left:5px;">New Tag</div></a></td>
         </tr>
         <tr>
             <td></td>

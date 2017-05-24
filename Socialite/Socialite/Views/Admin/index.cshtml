@@ -1,0 +1,15 @@
+﻿@model PagedList.IPagedList<Socialite.Models.AdminUserViewModel>
+
+@{
+    ViewBag.Title = "Admin Control Panel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p class="text-success">@ViewBag.StatusMessage</p>
+<p class="text-error">@ViewBag.ErrorMessage</p>
+
+
+<div class="userview">
+    @{Html.RenderPartial("ShowUserDetails");}
+</div>
+
+

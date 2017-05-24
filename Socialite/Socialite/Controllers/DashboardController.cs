@@ -266,8 +266,7 @@ namespace Socialite.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-
-        public ActionResult Post(string slug)
+        public ActionResult Post(string sortOrder, string slug)
         {
             PostViewModel model = new PostViewModel();
             var posts = GetPosts();
@@ -290,8 +289,11 @@ namespace Socialite.Controllers
             model.Body = post.Body;
             model.PostLikes = _dashboardRepo.LikeDislikeCount("postlike", post.Id);
             model.PostDislikes = _dashboardRepo.LikeDislikeCount("postdislike", post.Id);
+            model.CommentViewModel = CreateCommentViewModel(post.Id, sortOrder);
             return View(model);
         }
+
+
 
         public ActionResult UpdatePostLike(string postid, string slug, string username, string likeordislike, string sortorder)
         {
@@ -518,9 +520,52 @@ namespace Socialite.Controllers
 
 
         [ChildActionOnly]
-        public ActionResult Comments(string pageId, string sortOrder)
+        public ActionResult Comments(PostViewModel model, Post post, string pageId, string sortOrder)
         {
-            return PartialView();
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.DataSortParm = string.IsNullOrEmpty(sortOrder) ? "date_asc" : "";
+            ViewBag.BestSortParm = sortOrder == "Best" ? "best_desc" : "Best";
+
+            var postComments = _dashboardRepo.GetPostComments(post).OrderByDescending(d => d.DateTime).ToList();
+
+            foreach (var comment in postComments)
+            {
+                var likes = LikeDislikeCount("commentlike", comment.Id);
+                var dislikes = LikeDislikeCount("commentdislike", comment.Id);
+                comment.NetLikeCount = likes - dislikes;
+                if (comment.Replies != null) comment.Replies.Clear();
+                List<CommentViewModel> replies = _dashboardRepo.GetParentReplies(comment);
+                foreach (var reply in replies)
+                {
+                    var rep = _dashboardRepo.GetReplyById(reply.Id);
+                    comment.Replies.Add(rep);
+                }
+            }
+
+            switch (sortOrder)
+            {
+                case "date_asc":
+                    postComments = postComments.OrderBy(x => x.DateTime).ToList();
+                    ViewBag.DateSortLink = "active";
+                    break;
+                case "Best":
+                    postComments = postComments.OrderByDescending(x => x.NetLikeCount).ToList();
+                    ViewBag.BestSortLink = "active";
+                    break;
+                case "best_desc":
+                    postComments = postComments.OrderBy(x => x.NetLikeCount).ToList();
+                    ViewBag.BestSortLink = "active";
+                    break;
+                default:
+                    postComments = postComments.OrderByDescending(x => x.DateTime).ToList();
+                    ViewBag.DateSortLink = "active";
+                    break;
+            }
+
+            model.UrlSeo = post.UrlSeo;
+            model.Comments = postComments;
+            return PartialView(model);
+
         }
         public CommentViewModel CreateCommentViewModel(string pageId, string sortOrder)
         {
